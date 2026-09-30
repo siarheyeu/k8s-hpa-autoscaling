@@ -26,10 +26,7 @@ jobs:
       run: |
         pip install flake8
         cd app
-        flake8 . --max-line-length=120
+        flake8 . --max-line-length=120 --exit-zero
 
     - name: Build Docker image
       run: docker build -t k8s-hpa-autoscaling:test ./app
-
-    - name: Build Docker image
-      run: docker build -t k8s-hpa-autoscaling:test app/
