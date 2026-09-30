@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: hpa-demo-app
+  namespace: hpa-demo
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: hpa-demo-app
+  endpoints:
+  - port: http
+    path: /metrics
+    interval: 15s
+    scrapeTimeout: 10s
+  namespaceSelector:
+    matchNames:
+    - hpa-demo
